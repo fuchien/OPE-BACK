@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
+    "heroku-postbuild": "sucrase ./src -d ./dist --transforms typescript,imports",
     "build": "sucrase ./src -d ./dist --transforms typescript,imports"
   },
   "devDependencies": {
