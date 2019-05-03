@@ -15,8 +15,8 @@ routes.get('/', (req, res) => res.send('Hello World'))
 /********** INFORMATIONS **********/
 
 // 
-routes.get('/api/informations', InformationController.index)
-routes.post('/api/informations', InformationController.store)
+routes.get('/api/informations/:type', InformationController.index)
+routes.post('/api/informations/:type', InformationController.store)
 
 /* INFORMATIONS */
 

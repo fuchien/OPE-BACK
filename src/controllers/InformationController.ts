@@ -9,7 +9,7 @@ import enumControllers from './EnumControllers';
 class InformationController {
   public async index (req: Request, res: Response): Promise<Response> {
     let informations;
-    if (req.body.type === enumControllers.HOME) {
+    if (req.params.type === enumControllers.HOME) {
       informations = await HomeController.index(req, res);
     }
 
@@ -18,7 +18,7 @@ class InformationController {
 
   public async store (req: Request, res: Response): Promise<Response> {
     let information;
-    if (req.body.type === enumControllers.HOME) {
+    if (req.params.type === enumControllers.HOME) {
       information = await HomeController.store(req, res);
     }
 

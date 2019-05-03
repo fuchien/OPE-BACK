@@ -1,5 +1,5 @@
 enum Controllers {
-    HOME = 'informations/Home'
+    HOME = 'Home'
 }
 
 export default Controllers
