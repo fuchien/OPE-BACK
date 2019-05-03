@@ -1,18 +1,36 @@
 import { Request, Response } from 'express'
 
-import Information from '../schemas/Information'
+// CONTROLLERS
+import HomeController from './Informations/HomeController';
+
+// ENUM
+import enumControllers from './EnumControllers';
 
 class InformationController {
   public async index (req: Request, res: Response): Promise<Response> {
-    const Informations = await Information.find()
+    let informations;
+    if (req.body.type === enumControllers.HOME) {
+      informations = await HomeController.index(req, res);
+    }
 
-    return res.json(Informations)
+    return informations
   }
 
   public async store (req: Request, res: Response): Promise<Response> {
-    const newInformation = await Information.create(req.body)
+    let information;
+    if (req.body.type === enumControllers.HOME) {
+      information = await HomeController.store(req, res);
+    }
 
-    return res.json(newInformation)
+    return information
+  }
+
+  getController (type: string) {
+    let controller;
+    if (type === enumControllers.HOME) {
+      controller = HomeController
+    }
+    return controller;
   }
 }
 
