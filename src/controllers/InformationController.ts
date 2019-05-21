@@ -1,36 +1,22 @@
 import { Request, Response } from 'express'
 
-// CONTROLLERS
-import HomeController from './Informations/HomeController';
-
-// ENUM
-import enumControllers from './EnumControllers';
+// SERVICES
+import InformationService from '../services/InformationService';
+import InformationFactory from '../models/Informations/InformationFactory';
 
 class InformationController {
-  public async index (req: Request, res: Response): Promise<Response> {
-    let informations;
-    if (req.params.type === enumControllers.HOME) {
-      informations = await HomeController.index(req, res);
-    }
 
-    return informations
+  public async index (req: Request, res: Response): Promise<Response> {
+    const cls = await InformationFactory.handlerGetControllers(req, res);
+    return cls
+
+    // return await InformationService.getControllerAllData(req, res, cls);
   }
 
   public async store (req: Request, res: Response): Promise<Response> {
-    let information;
-    if (req.params.type === enumControllers.HOME) {
-      information = await HomeController.store(req, res);
-    }
+    const information = await InformationFactory.handlerPostControllersData(req, res);
 
     return information
-  }
-
-  getController (type: string) {
-    let controller;
-    if (type === enumControllers.HOME) {
-      controller = HomeController
-    }
-    return controller;
   }
 }
 

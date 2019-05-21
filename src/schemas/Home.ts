@@ -1,10 +1,8 @@
 import { Schema, model, Document } from 'mongoose'
+import { IHome } from '../interface/home.interface';
 
-interface HomeInterface extends Document {
-  type?: string
-  title1?: string
-  title2?: string
-  informations: {}[]
+interface HomeInterface extends Document, IHome {
+
 }
 
 const HomeSchema = new Schema({
