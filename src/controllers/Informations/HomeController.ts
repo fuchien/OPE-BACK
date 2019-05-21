@@ -14,6 +14,18 @@ class HomeController {
 
     return res.json(newHome)
   }
+
+  public async update (req: Request, res: Response): Promise<Response> {
+    const home = await Home.findOneAndUpdate()
+
+    return res.json(home)
+  }
+
+  public async delete (req: Request, res: Response): Promise<Response> {
+    const home = await Home.remove({_id: req.params.id})
+
+    return res.json(home)
+  }
 }
 
 export default new HomeController()

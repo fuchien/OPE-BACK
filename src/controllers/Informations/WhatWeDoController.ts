@@ -14,6 +14,18 @@ class WhatWeDoController {
 
     return res.json(newWhatWeDo)
   }
+
+  public async update (req: Request, res: Response): Promise<Response> {
+    const WhatWeDos = await WhatWeDo.findOneAndUpdate()
+
+    return res.json(WhatWeDos)
+  }
+
+  public async delete (req: Request, res: Response): Promise<Response> {
+    const newWhatWeDo = await WhatWeDo.remove({_id: req.params.id})
+
+    return res.json(newWhatWeDo)
+  }
 }
 
 export default new WhatWeDoController()
