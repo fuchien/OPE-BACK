@@ -5,6 +5,7 @@ import { Home } from './home.model';
 // CONTROLLERS
 import HomeController from '../../controllers/Informations/HomeController';
 import ContactController from '../../controllers/Informations/ContactController';
+import WhatWeDoController from '../../controllers/Informations/WhatWeDoController';
 
 class InformationFactory {
 
@@ -17,6 +18,9 @@ class InformationFactory {
         if (EnumInterfaceController.CONTACT === req.params.type) {
             return await ContactController.index(req, res);
         }
+        if (EnumInterfaceController.WHAT_WE_DO === req.params.type) {
+            return await WhatWeDoController.index(req, res);
+        }
         return
     }
 
@@ -26,6 +30,9 @@ class InformationFactory {
         }
         if (EnumInterfaceController.CONTACT === req.params.type) {
             return await ContactController.store(req, res);
+        }
+        if (EnumInterfaceController.WHAT_WE_DO === req.params.type) {
+            return await WhatWeDoController.store(req, res);
         }
         return
     }
